@@ -2,7 +2,7 @@ name: CI Env Check
 on: [push]
 jobs:
   env:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - use: actions/checkout@v2
 
