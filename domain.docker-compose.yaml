@@ -8,5 +8,5 @@ services:
       # 配置域名
       - "traefik.http.routers.cra.rule=Host(`cra.jinghonggang.fun`)"
       # 配置 TLS
-      - traefik.http.routers.cra.tls=true
-      - traefik.http.routers.cra.tls.certresolver=le
+#      - traefik.http.routers.cra.tls=true
+#      - traefik.http.routers.cra.tls.certresolver=le
