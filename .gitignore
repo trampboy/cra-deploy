@@ -24,3 +24,6 @@ yarn-error.log*
 
 # IDEA
 .idea
+
+# 日志文件
+/log
