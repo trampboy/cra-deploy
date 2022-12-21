@@ -1,0 +1,38 @@
+# 执行CI，包括安装依赖、代码检测、单元测试、生成测试地址
+name: CI
+
+# 执行 CI 的时机: 当 git push 代码到 github 时
+on: [push]
+
+# 执行所有的 jobs
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # 配置 nodejs 环境
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      # 安装依赖
+      - name: Install Dependencies
+        run: yarn
+
+      # 使用 npm run build 模拟 ESLint
+      - name: ESLint
+        run: npm run build
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: Install Dependencies
+        run: yarn
+      - name: Test
+        run: npm run test
+
