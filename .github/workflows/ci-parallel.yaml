@@ -62,5 +62,5 @@ jobs:
     runs-on: ubuntu-latest
     needs: [lint, test]
     steps:
-      - run echo 'Preview OK'
+      - run: echo 'Preview OK'
 
