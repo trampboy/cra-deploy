@@ -1,0 +1,8 @@
+version: "3"
+services:
+  cra-preview-${COMMIT_REF_NAME}:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    labels:
+      - "traefik.http.routers.cra-preview-${COMMIT_REF_NAME}.rule=Host(`${COMMIT_REF_NAME}.cra.jinghonggang.fun`)"
