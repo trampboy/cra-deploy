@@ -19,7 +19,7 @@ jobs:
       url: http://cra.jinghonggang.fun/
     steps:
       # 切出代码，使用该 Action 将可以拉取最新代码
-      - uses: action/checkout@v2
+      - uses: actions/checkout@v2
       - name: Deploy
         run: docker-compose -f domain.docker-compose.yaml up --build -d domain
         env:
