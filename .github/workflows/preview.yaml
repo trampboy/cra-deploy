@@ -14,7 +14,7 @@ jobs:
       # 获取 CICD 中的变量: Context
       # https://docs.github.com/en/actions/learn-github-actions/expressions
       name: preview/${{github.ref_name}}
-      url: http://${{github_ref_name}}.cra.jinghonggang.fun
+      url: http://${{github.ref_name}}.cra.jinghonggang.fun
     steps:
       - uses: actions/checkout@v2
       - name: Preview
