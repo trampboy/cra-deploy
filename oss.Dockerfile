@@ -8,7 +8,9 @@ ENV PUBLIC_URL https://blog-1255502973.cos.ap-shanghai.myqcloud.com/
 
 WORKDIR /code
 
-RUN pip install coscmd \
+# 在 alpine 中 使用 add py3-pip 安装 pip3
+RUN apk add py3-pip \
+    && pip3 install coscmd \
     && coscmd config -a $ACCESS_KEY_ID -s $ACCESS_KEY_SECRET -b $BUCKET -r $REGION
 
 # 单独分离 package.json，是为了安装依赖可最大限度利用缓存

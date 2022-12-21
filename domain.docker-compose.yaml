@@ -1,0 +1,28 @@
+version: "3"
+services:
+  traefik:
+    image: traefik:v2.5
+    # Enables the web UI and tells Traefik to listen to docker
+    command: --api.insecure=true --providers.docker
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - ./traefik.toml:/etc/traefik/traefik.toml
+      - ./acme.json:/acme.json
+      - ./log:/log
+      # So that Traefik can listen to the Docker events
+      - /var/run/docker.sock:/var/run/docker.sock
+    container_name: traefik
+    env_file: .env
+  domain:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    labels:
+      # 配置域名
+      - "traefik.http.routers.cra.rule=Host(`cra.jinghonggang.fun`)"
+      # 配置 TLS
+#      - traefik.http.routers.cra.tls=true
+#      - traefik.http.routers.cra.tls.certresolver=le
